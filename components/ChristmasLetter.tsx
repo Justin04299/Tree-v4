@@ -10,35 +10,12 @@ interface ChristmasLetterProps {
 }
 
 const ChristmasLetter: React.FC<ChristmasLetterProps> = ({ progressRef }) => {
-  const groupRef = useRef<THREE.Group>(null);
-
-  useFrame((state) => {
-    if (!groupRef.current) return;
-    
-    const p = progressRef.current; // 0 = Formed, 1 = Chaos
-    const t = state.clock.elapsedTime;
-
-    // The letter flows from "inside" the tree towards the user
-    // targetZ = 8 brings it closer to the camera (which is at z=18 in Chaos)
-    const targetZ = -5 + p * 13; 
-    // vertical centering: Experience is at y=-6, so y=6 makes it y=0 in world space
-    const targetY = 6 + Math.sin(t * 0.8) * 0.3; 
-    const targetScale = p;
-    // Less rotation on mobile/smaller scales to keep it legible
-    const targetRotation = Math.sin(t * 0.5) * 0.03 * p;
-
-    groupRef.current.position.set(0, targetY, targetZ);
-    groupRef.current.scale.setScalar(targetScale);
-    groupRef.current.rotation.z = targetRotation;
-    groupRef.current.rotation.y = Math.cos(t * 0.3) * 0.04 * p;
-  });
 
   const glowIntensity = progressRef.current;
   const pulseScale = 1 + Math.sin(Date.now() * 0.002) * 0.05;
   const wiggleRotation = Math.sin(Date.now() * 0.003) * 5; // Subtle wiggle for the seal
 
   return (
-    <group ref={groupRef}>
       <Html
         fullscreen
         style={{
@@ -47,6 +24,7 @@ const ChristmasLetter: React.FC<ChristmasLetterProps> = ({ progressRef }) => {
           transition: 'opacity 0.6s ease-out',
           opacity: progressRef.current > 0.05 ? 1 : 0,
           pointerEvents: progressRef.current > 0.8 ? 'auto' : 'none',
+          zIndex: 9999,
         }}
       >
           <div
@@ -57,17 +35,18 @@ const ChristmasLetter: React.FC<ChristmasLetterProps> = ({ progressRef }) => {
               alignItems: 'center',
               justifyContent: 'center',
               padding: '24px',
-              pointerEvents: 'none',
-              zIndex: 50,
+              boxSizing: 'border-box',
             }}
           >
             <div style={{ pointerEvents: 'auto' }}>
               <div
                 className="relative group"
                 style={{
-                  maxWidth: '92vw',
-                  maxHeight: '92vh',
-                  overflow: 'auto',
+                  width: 'min(450px, 96vw)',
+                  maxHeight: 'min(92dvh, 92vh)',
+                  overflowY: 'auto',
+                  WebkitOverflowScrolling: 'touch',
+                  touchAction: 'pan-y',
                 }}
               >
           {/* Dynamic Glow Effect */}
