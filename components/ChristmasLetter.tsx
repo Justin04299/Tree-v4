@@ -41,22 +41,33 @@ const ChristmasLetter: React.FC<ChristmasLetterProps> = ({ progressRef }) => {
     <group ref={groupRef}>
       <Html
         fullscreen
-        center
         style={{
           transition: 'opacity 0.6s ease-out',
           opacity: progressRef.current > 0.05 ? 1 : 0,
           pointerEvents: progressRef.current > 0.8 ? 'auto' : 'none',
         }}
       >
-        <div
-          className="relative group"
-          style={{
-            maxWidth: '92vw',
-            maxHeight: '92vh',
-            overflow: 'auto',
-            margin: 'auto',
-          }}
-        >
+          <div
+            style={{
+              position: 'fixed',
+              inset: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '24px',
+              pointerEvents: 'none',
+              zIndex: 50,
+            }}
+          >
+            <div style={{ pointerEvents: 'auto' }}>
+              <div
+                className="relative group"
+                style={{
+                  maxWidth: '92vw',
+                  maxHeight: '92vh',
+                  overflow: 'auto',
+                }}
+              >
           {/* Dynamic Glow Effect */}
           <div 
             className="absolute inset-0 rounded-sm blur-3xl transition-opacity duration-1000"
