@@ -40,10 +40,8 @@ const ChristmasLetter: React.FC<ChristmasLetterProps> = ({ progressRef }) => {
   return (
     <group ref={groupRef}>
       <Html
+        fullscreen
         center
-        distanceFactor={10}
-        transform
-        sprite
         style={{
           transition: 'opacity 0.6s ease-out',
           opacity: progressRef.current > 0.05 ? 1 : 0,
