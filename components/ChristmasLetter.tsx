@@ -50,7 +50,15 @@ const ChristmasLetter: React.FC<ChristmasLetterProps> = ({ progressRef }) => {
           pointerEvents: progressRef.current > 0.8 ? 'auto' : 'none',
         }}
       >
-        <div className="relative group">
+        <div
+          className="relative group"
+          style={{
+            maxWidth: '92vw',
+            maxHeight: '92vh',
+            overflow: 'auto',
+            margin: 'auto',
+          }}
+        >
           {/* Dynamic Glow Effect */}
           <div 
             className="absolute inset-0 rounded-sm blur-3xl transition-opacity duration-1000"
