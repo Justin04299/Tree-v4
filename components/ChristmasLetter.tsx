@@ -77,10 +77,10 @@ const ChristmasLetter: React.FC<ChristmasLetterProps> = ({ progressRef }) => {
             <div className="space-y-4 font-serif italic text-gray-900 text-[14px] md:text-[16px] leading-relaxed tracking-tight antialiased">
               <p className="text-left font-bold text-[#d4af37] text-sm md:text-lg not-italic mb-1">Dear Friend,</p>
               <p className="drop-shadow-sm opacity-95">
-                May your holidays be filled with warmth and wonder, and may the coming year bring you boundless happiness.
+                Wishing you lots of happiness ahead, and hoping everything just keeps getting better for you!! 
               </p>
               <p className="drop-shadow-sm opacity-95">
-                Thank you for being part of this magical journey. Wishing you a truly splendid season!
+                Thanks for being part of my journey. Really glad to have you in my life :D
               </p>
             </div>
 
