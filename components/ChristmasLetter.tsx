@@ -135,8 +135,10 @@ const ChristmasLetter: React.FC<ChristmasLetterProps> = ({ progressRef }) => {
             <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')]" />
           </div>
         </div>
-      </Html>
-    </group>
+      </div>
+    </div>
+  </Html>
+</group>
   );
 };
 
