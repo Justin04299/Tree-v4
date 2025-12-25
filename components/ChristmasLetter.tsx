@@ -42,6 +42,8 @@ const ChristmasLetter: React.FC<ChristmasLetterProps> = ({ progressRef }) => {
       <Html
         fullscreen
         style={{
+          position: 'fixed',
+          inset: 0,
           transition: 'opacity 0.6s ease-out',
           opacity: progressRef.current > 0.05 ? 1 : 0,
           pointerEvents: progressRef.current > 0.8 ? 'auto' : 'none',
